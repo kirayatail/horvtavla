@@ -1,0 +1,19 @@
+{
+  "name": "horvtavla",
+  "version": "1.0.0",
+  "description": "Horvtavla, you knowIT.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "horv",
+    "tavla"
+  ],
+  "author": "iMax",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.13.3",
+    "request": "^2.65.0"
+  }
+}

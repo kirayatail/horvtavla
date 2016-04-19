@@ -1,0 +1,11 @@
+.bg-primary input {
+  background-color: #f05f40;
+  border: 2px solid white;
+  margin-bottom: 1em;
+  border-radius: .25em;
+  padding: .25em .5em;
+}
+
+.bg-primary label {
+  line-height: 3rem;
+}

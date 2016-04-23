@@ -23,7 +23,7 @@ module.exports = {
 
       if(!pending) {
         pending = new Pending({email: req.body.email});
-        console.log("Created a new pending pledge");
+
       }
 
       pending.pledge = pledge;
@@ -36,7 +36,6 @@ module.exports = {
             return res.status(500).send({message: 'Database error, see server log.'});
           }
 
-          console.log("Pending pledge: ", pending);
           mail.confirmation(pending);
 
           return res.send({message:"pledge is pending"});

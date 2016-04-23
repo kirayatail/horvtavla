@@ -14,6 +14,13 @@ app.use(bodyParser.json());
 require('./backend/models/pledge');
 require('./backend/models/pending');
 
+app.get('*',function(req,res,next){
+  if(process.env.PROD && req.headers['x-forwarded-proto']!='https')
+    res.redirect('https://mypreferreddomain.com'+req.url)
+  else
+    next() /* Continue to other routes if we're not redirecting */
+})
+
 require('./backend/routes')(app);
 
 app.use(express.static('app'))

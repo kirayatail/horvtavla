@@ -86,7 +86,7 @@
           <label for="emailInput">Email</label>
         </div>
         <div class="col-xs-4">
-          <input id="emailInput" type="email" autocapitalize="none" autocomplete="email" autocorrect="off"/>
+          <input id="emailInput" type="email" autocapitalize="none" autocomplete="email" autocorrect="off" ng-model="email"/>
         </div>
       </div>
       <div class="row">
@@ -94,7 +94,7 @@
           <label for="pledgeInput">Bidrag (kr)</label>
         </div>
         <div class="col-xs-4">
-          <input id="pledgeInput" type="number" value="20" min="0" />
+          <input id="pledgeInput" type="number" value="20" min="0" ng-model="amount"/>
         </div>
       </div>
       <div class="row">
@@ -102,18 +102,18 @@
           <label for="nickInput">Nick</label>
         </div>
         <div class="col-xs-4">
-          <input id="nickInput" type="text" autocapitalize="none" autocomplete="off" autocorrect="off"/>
+          <input id="nickInput" type="text" autocapitalize="none" autocomplete="off" autocorrect="off" ng-model="nick"/>
         </div>
       </div>
       <div class="row">
         <div class="col-xs-4 col-xs-offset-2 col-sm-offset-6">
-          <input id="anonymousInput" type="checkbox" />
+          <input id="anonymousInput" type="checkbox" ng-model="anonymous"/>
           <label for="anonymousInput">Jag vill vara anonym</label>
         </div>
       </div>
       <div class="row">
         <div class="col-xs-12 center-center">
-          <button class="btn btn-default btn-xl">Skicka</button>
+          <button class="btn btn-default btn-xl" ng-click="submit()">Skicka</button>
         </div>
       </div>
     </form>

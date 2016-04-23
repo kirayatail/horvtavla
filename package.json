@@ -13,7 +13,11 @@
   "author": "iMax",
   "license": "MIT",
   "dependencies": {
+    "body-parser": "^1.15.0",
     "express": "^4.13.3",
+    "lodash": "^4.11.1",
+    "mongoose": "^4.4.13",
+    "node-fetch": "^1.5.1",
     "request": "^2.65.0"
   }
 }

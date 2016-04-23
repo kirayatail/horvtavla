@@ -9,3 +9,9 @@
 .bg-primary label {
   line-height: 3rem;
 }
+
+.center-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

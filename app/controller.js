@@ -5,6 +5,8 @@ app.controller('StartController', ['$scope', '$http',
 function($scope, $http) {
     console.log("Running Angular controller");
 
+    $scope.registerSuccess = false;
+
     $scope.submit = function() {
       var pledge = {
         email: $scope.email,
@@ -16,8 +18,12 @@ function($scope, $http) {
       $scope.registerPending = true;
       $http.post('/api/pledge', pledge).then(function(res) {
         $scope.registerPending = false;
+        $scope.registerSuccess = true;
 
-        console.log("Registration successfully sent: ", res.message);
+        $scope.email = "";
+        $scope.amount = "";
+        $scope.nick = "";
+        $scope.anonymous = false;
 
       }, function(err) {
         $scope.registerPending = false;

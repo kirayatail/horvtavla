@@ -1,0 +1,14 @@
+<header>
+  <div class="header-content">
+    <div class="header-content-inner" ng-if="confirm && done">
+      <h1>Tack!</h1>
+      <p>Ditt bidrag är nu registrerat, tack för att du bidrar till insamlingen.</p>
+      <a href="/" class="btn btn-primary btn-xl">Tillbaka</a>
+    </div>
+    <div class="header-content-inner" ng-if="!confirm && done">
+      <h1>Ojdå!</h1>
+      <p>Länken var inte giltig, prova att registrera igen eller kontakta iMax för felsökning.</p>
+      <a href="/#/" class="btn btn-primary btn-xl">Tillbaka</a>
+    </div>
+  </div>
+</header>

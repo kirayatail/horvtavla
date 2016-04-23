@@ -9,9 +9,10 @@ app.config(['$routeProvider', function($routeProvider) {
       templateUrl: 'partials/start.html',
       controller: 'StartController'
    }).
-  //  when('/confirm', {
-  //
-  //  }).
+   when('/confirm/:token', {
+      templateUrl: 'partials/confirm.html',
+      controller: 'ConfirmController'
+   }).
 
    otherwise({
       redirectTo: '/'

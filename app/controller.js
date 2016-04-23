@@ -28,6 +28,14 @@ function($scope, $http) {
 }]);
 
 
-app.controller('ConfirmController', ['$scope', function($scope) {
-  
+app.controller('ConfirmController', ['$scope', '$routeParams', '$http', function($scope, $routeParams, $http) {
+  $scope.done = false;
+
+  $http.get('/api/confirm/'+$routeParams.token).then(function(res) {
+    $scope.confirm = res.confirmed;
+    $scope.done = true;
+  }, function(err) {
+    $scope.confirm = false;
+    $scope.done = true;
+  });
 }]);

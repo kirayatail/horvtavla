@@ -32,7 +32,8 @@ app.controller('ConfirmController', ['$scope', '$routeParams', '$http', function
   $scope.done = false;
 
   $http.get('/api/confirm/'+$routeParams.token).then(function(res) {
-    $scope.confirm = res.confirmed;
+    console.log(res);
+    $scope.confirm = res.data.confirmed;
     $scope.done = true;
   }, function(err) {
     $scope.confirm = false;

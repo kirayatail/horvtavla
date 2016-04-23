@@ -1,5 +1,5 @@
 'use strict';
-require('dotenv').config();
+if(!process.env || !process.env.PROD) require('dotenv').config();
 var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');

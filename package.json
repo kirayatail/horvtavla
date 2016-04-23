@@ -14,10 +14,12 @@
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.15.0",
+    "dotenv": "^2.0.0",
     "express": "^4.13.3",
     "lodash": "^4.11.1",
     "mongoose": "^4.4.13",
     "node-fetch": "^1.5.1",
+    "postmark": "^1.2.1",
     "request": "^2.65.0"
   }
 }

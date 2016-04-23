@@ -1,10 +1,11 @@
 'use strict';
+require('dotenv').config();
 var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var app = express();
 
-var mongoUri = process.env.MONGOLAB_URI || 'mongodb://localhost:27017/horvtavla';
+var mongoUri = process.env.MONGODB_URI;
 
 var db = mongoose.connect(mongoUri);
 

@@ -3,6 +3,7 @@ var Pledge = mongoose.model('Pledge');
 var Pending = mongoose.model('Pending');
 var crypto = require('crypto');
 var _ = require('lodash');
+var mail = require('../lib/mail');
 
 
 module.exports = {
@@ -36,7 +37,7 @@ module.exports = {
           }
 
           console.log("Pending pledge: ", pending);
-          //TODO: Mail user!
+          mail.confirmation(pending);
 
           return res.send({message:"pledge is pending"});
         });

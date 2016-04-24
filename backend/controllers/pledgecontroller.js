@@ -82,11 +82,13 @@ module.exports = {
     sum = 0;
     Pledge.find({}, function(err, pledges) {
       for(var p of pledges) {
-        sum += p.amount;
-        if(p.anonymous) {
-          anonymous++;
-        } else {
-          nicks.push(p.nick);
+        if(p.amount > 0) {
+          sum += p.amount;
+          if(p.anonymous) {
+            anonymous++;
+          } else {
+            nicks.push(p.nick);
+          }
         }
       }
 

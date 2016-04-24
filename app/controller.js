@@ -5,6 +5,15 @@ app.controller('StartController', ['$scope', '$http',
 function($scope, $http) {
     console.log("Running Angular controller");
 
+    $scope.backers = [];
+    $scope.anonymous = 0;
+
+    $http.get('/api/stats').then(function(res) {
+      $scope.backers = res.data.backers;
+      $scope.anonymous = res.data.anonymous;
+      $scope.sum = res.data.sum;
+    })
+
     $scope.registerSuccess = false;
 
     $scope.submit = function() {
@@ -45,4 +54,6 @@ app.controller('ConfirmController', ['$scope', '$routeParams', '$http', function
     $scope.confirm = false;
     $scope.done = true;
   });
+
+
 }]);

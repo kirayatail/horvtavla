@@ -94,5 +94,27 @@ module.exports = {
 
       return res.send({backers: nicks.sort(), sum: sum, anonymous: anonymous});
     });
+  },
+  goals: function(req, res) {
+    const goals = {
+      max: 3000,
+      goals: [
+        {
+          name: "Tavla",
+          amount: 1000
+        },
+        {
+          name: "Plakett",
+          amount: 1500
+        },
+        {
+          name: "Fest",
+          amount: 3000
+        }
+      ]
+    };
+
+    res.send(goals);
+
   }
 };

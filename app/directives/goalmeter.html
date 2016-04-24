@@ -1,0 +1,14 @@
+<h2>Såhär långt har vi kommit:</h2>
+<div class="meter-container" style="position: relative; left: 150px;">
+  <div class="meter-sum" style="bottom: {{meterHeight}}%">
+    {{sum}} kr
+  </div>
+  <div class="meter">
+    <div class="meter-bar" style="height: {{ meterHeight }}%"></div>
+  </div>
+  <div class="meter-labels">
+    <ul class="goals">
+      <li ng-repeat="g in goals" class="goal" ng-class="{reached: (sum > g.amount)}" style="bottom: {{g.height}}%">{{g.name}}</li>
+    </ul>
+  </div>
+</div>

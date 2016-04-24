@@ -20,6 +20,63 @@
   color: green;
 }
 
+.meter-container {
+    display: flex;
+    flex-direction: row;
+    height: 400px;
+}
+
+.meter-sum {
+  position:absolute;
+  left: -63.5px;
+  line-height: 0;
+}
+
+.meter-sum::after {
+  content: ' -';
+}
+
+.meter {
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    width: 60px;
+    border-radius: 20px;
+    border: 5px solid #999;
+}
+.meter-labels {
+    flex: 1;
+    height: 100%;
+}
+.meter-bar {
+    transition: height 1s;
+    height: 0;
+    width: 100%;
+    background: #f05f40;
+    border-radius: 15px;
+}
+ul.goals {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    list-style-type: none;
+}
+li.goal {
+    position: absolute;
+    color: #999;
+}
+
+li.goal.reached {
+    color: #222;
+    font-weight: bold;
+}
+
+li.goal::before {
+    content: '- ';
+}
+
+
 header {
   background-image: url(../img/header-500.jpg);
 }

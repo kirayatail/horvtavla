@@ -7,4 +7,6 @@ module.exports = function(app) {
   app.get('/api/confirm/:token', pledgeController.confirm);
 
   app.get('/api/stats', pledgeController.stats);
+
+  app.get('/api/goals', pledgeController.goals);
 };

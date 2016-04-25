@@ -20,6 +20,14 @@
   color: green;
 }
 
+.backerlist {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: 400px;
+  align-items: flex-start;
+}
+
 .meter-container {
     display: flex;
     flex-direction: row;
@@ -42,7 +50,7 @@
     align-items: flex-end;
     width: 60px;
     border-radius: 20px;
-    border: 5px solid #999;
+    border: 5px solid #222;
 }
 .meter-labels {
     flex: 1;

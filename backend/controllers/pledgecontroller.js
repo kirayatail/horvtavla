@@ -3,8 +3,11 @@ var Pledge = mongoose.model('Pledge');
 var Pending = mongoose.model('Pending');
 var Goal = mongoose.model('Goal');
 var crypto = require('crypto');
+var Pushover = require('node-pushover');
 var _ = require('lodash');
 var mail = require('../lib/mail');
+
+var push = new Pushover({token: process.env.PUSHOVER_APP, user: process.env.PUSHOVER_USER});
 
 
 module.exports = {
@@ -47,6 +50,7 @@ module.exports = {
 
   confirm: function(req, res) {
     var token = req.params.token;
+    var shouldPush = false;
     if(!token) {
       return res.status(400).send({message: "Token missing"});
     }
@@ -65,12 +69,17 @@ module.exports = {
 
         if(!pledge) {
           pledge = new Pledge(pending.pledge);
+          shouldPush = true;
         }
 
         _.assign(pledge, pending.pledge);
 
         pledge.save(function(err) {
           Pending.remove({"_id": pending._id}, function(err) {
+
+            this.stats(null, {send: function(stats) {
+              push.send("Horvtavla", "New pledge registered: "+pending.pledge.amount+" kr\nCurrent sum: "+stats.sum+" kr");
+            }});
             return res.send({message: "Pledge confirmed", confirmed: true});
           });
         });

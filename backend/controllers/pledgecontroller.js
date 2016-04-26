@@ -50,7 +50,7 @@ module.exports = {
 
   confirm: function(req, res) {
     var token = req.params.token;
-    var shouldPush = false;
+    var self = this;
     if(!token) {
       return res.status(400).send({message: "Token missing"});
     }
@@ -69,7 +69,6 @@ module.exports = {
 
         if(!pledge) {
           pledge = new Pledge(pending.pledge);
-          shouldPush = true;
         }
 
         _.assign(pledge, pending.pledge);
@@ -77,7 +76,7 @@ module.exports = {
         pledge.save(function(err) {
           Pending.remove({"_id": pending._id}, function(err) {
 
-            this.stats(null, {send: function(stats) {
+            module.exports.stats(null, {send: function(stats) {
               push.send("Horvtavla", "New pledge registered: "+pending.pledge.amount+" kr\nCurrent sum: "+stats.sum+" kr");
             }});
             return res.send({message: "Pledge confirmed", confirmed: true});
@@ -108,7 +107,7 @@ module.exports = {
   goals: function(req, res) {
 
     Goal.find({}, function(err, goals) {
-      var max = Math.max(...goals.map(e => e.amount));
+      var max = _.reduce(goals, (s, e) => Math.max(s, e.amount), 0);
 
       res.send({max, goals});
     });

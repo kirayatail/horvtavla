@@ -5,3 +5,5 @@ var GoalSchema = new Schema({
   name: String,
   amount: Number
 });
+
+module.exports = mongoose.model('Goal', GoalSchema);

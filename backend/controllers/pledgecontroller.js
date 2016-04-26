@@ -99,7 +99,7 @@ module.exports = {
   goals: function(req, res) {
 
     Goal.find({}, function(err, goals) {
-      var max = _.reduce(goals, (s, e) => Math.max(s, e.amount));
+      var max = Math.max(...goals.map(e => e.amount));
 
       res.send({max, goals});
     });

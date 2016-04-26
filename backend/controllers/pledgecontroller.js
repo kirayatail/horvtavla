@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var Pledge = mongoose.model('Pledge');
 var Pending = mongoose.model('Pending');
+var Goal = mongoose.model('Goal');
 var crypto = require('crypto');
 var _ = require('lodash');
 var mail = require('../lib/mail');
@@ -96,25 +97,11 @@ module.exports = {
     });
   },
   goals: function(req, res) {
-    const goals = {
-      max: 3000,
-      goals: [
-        {
-          name: "Tavla",
-          amount: 1000
-        },
-        {
-          name: "Plakett",
-          amount: 1500
-        },
-        {
-          name: "Fest",
-          amount: 3000
-        }
-      ]
-    };
 
-    res.send(goals);
+    Goal.find({}, function(err, goals) {
+      var max = _.maxBy(goals, (e) => e.amount);
 
+      res.send({max, goals});
+    });
   }
 };

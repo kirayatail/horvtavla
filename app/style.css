@@ -73,6 +73,7 @@ ul.goals {
 li.goal {
     position: absolute;
     color: #999;
+    line-height: 0; 
 }
 
 li.goal.reached {

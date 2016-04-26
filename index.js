@@ -13,6 +13,7 @@ app.use(bodyParser.json());
 
 require('./backend/models/pledge');
 require('./backend/models/pending');
+require('./backend/models/goal');
 
 app.get('*',function(req,res,next){
   if(process.env.PROD && req.headers['x-forwarded-proto']!='https')

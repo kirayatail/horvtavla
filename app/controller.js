@@ -1,12 +1,13 @@
 'use strict';
 var app = angular.module('horvtavla');
 
-app.controller('StartController', ['$scope', '$http',
-function($scope, $http) {
+app.controller('StartController', ['$scope', '$http', '$interval', '$anchorScroll',
+function($scope, $http, $interval, $anchorScroll) {
     console.log("Running Angular controller");
 
     $scope.backers = [];
     $scope.anonymous = 0;
+    $scope.deadlinePassed = false;
 
     $http.get('/api/stats').then(function(res) {
       $scope.backers = res.data.backers;
@@ -19,6 +20,8 @@ function($scope, $http) {
     })
 
     $scope.registerSuccess = false;
+
+    $scope.goto = $anchorScroll;
 
     $scope.submit = function() {
       var pledge = {
@@ -43,6 +46,11 @@ function($scope, $http) {
         console.error(err);
       });
     };
+
+    $interval(function() {
+      if($scope.deadline && Date.now() > $scope.deadline)
+        $scope.deadlinePassed = true;
+    }, 2000)
 
 }]);
 

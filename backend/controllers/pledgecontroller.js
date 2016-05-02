@@ -11,7 +11,7 @@ var push = new Pushover({token: process.env.PUSHOVER_APP, user: process.env.PUSH
 
 
 function getDeadline() {
-  return 1462658400000;
+  return 1462744800000;
 }
 
 module.exports = {

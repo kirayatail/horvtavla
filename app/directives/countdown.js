@@ -20,8 +20,12 @@ app.directive('countdown', ['$interval', function($interval) {
       scope.counter = "";
       $interval(function() {
         if(scope.deadline) {
-          var diff = Math.floor((scope.deadline - Date.now()) / 1000);
-          scope.counter = durationString(diff);
+          if(scope.deadline > Date.now()) {
+            var diff = Math.floor((scope.deadline - Date.now()) / 1000);
+            scope.counter = durationString(diff);
+          } else {
+            scope.counter = "Deadline har passerat";
+          }
         }
       }, 1000);
 

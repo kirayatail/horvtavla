@@ -4,6 +4,7 @@
       <h1>Canvastavla</h1>
       <p>Horvs engagemang och arbete för sektionen förtjänar ett minnesmärke i form av ett konstverk. Var med och hjälp oss göra det till verklighet.</p>
       <countdown deadline="deadline"></countdown>
+      <button class="btn btn-primary btn-xl page-scroll" ng-click="goto('registerform')">Registrera</button>
     </div>
   </div>
 </header>
@@ -79,8 +80,17 @@
     </div>
   </div>
 </section>
-<section class="bg-primary">
-  <div class="container">
+<section class="bg-primary" id="registerform">
+  <div class="container" ng-if="deadlinePassed">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 text-center">
+        <h1 class="section-heading">Registreringen är stängd</h1>
+        <h2>Stort tack till alla backare!</h2>
+      </div>
+    </div>
+  </div>
+
+  <div class="container" ng-if="!deadlinePassed">
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 text-center">
         <h2 class="section-heading">Registrera mig (eller ändra mitt löfte)</h2>

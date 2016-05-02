@@ -105,11 +105,11 @@ module.exports = {
     });
   },
   goals: function(req, res) {
-
     Goal.find({}, function(err, goals) {
       var max = _.reduce(goals, (s, e) => Math.max(s, e.amount), 0);
-
-      res.send({max, goals});
+      module.exports.stats(null, {send: function(stats) {
+        res.send({max, goals, sum: stats.sum});
+      }});
     });
   }
 };

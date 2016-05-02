@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 text-center">
+      <h1>Roadmap</h1>
+    </div>
+  </div>
+  <div class="row" style="margin-top: 2em;">
+    <div class="hidden-xs hidden-sm progress-horizontal">
+      <div class="progress-point" ng-repeat="p in items" ng-class="{done: $index <= passedIndex}" ng-mouseover="showPop = true" ng-mouseleave="showPop = false">
+        <div class="progress-pop" ng-show="showPop">{{p}}</div>
+      </div>
+    </div>
+    <div class="hidden-md hidden-lg progress-vertical">
+      <div class="progress-point" ng-repeat="p in items" ng-class="{done: $index <= passedIndex}">
+        <div class="progress-pop">{{p}}</div>
+      </div>
+    </div>
+  </div>
+</div>

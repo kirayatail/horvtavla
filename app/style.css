@@ -73,7 +73,7 @@ ul.goals {
 li.goal {
     position: absolute;
     color: #999;
-    line-height: 0; 
+    line-height: 0;
 }
 
 li.goal.reached {
@@ -85,6 +85,52 @@ li.goal::before {
     content: '- ';
 }
 
+.progress-horizontal, .progress-vertical {
+  border-radius: 25px;
+  border: 5px solid #f05f40;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.progress-horizontal {
+  height: 50px;
+}
+
+.progress-vertical {
+  width: 50px;
+  min-height: 800px;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.progress-point {
+  border: 5px solid #f05f40;
+  width: 70px;
+  height: 70px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: -10px;
+}
+
+.progress-point.done {
+  background: #f05f40;
+}
+
+.progress-pop {
+  background-color: rgba(255,255,255,0.8);
+  padding: .25em;
+  min-width: 154px;
+  position: relative;
+  flex-grow: 1;
+  z-index: 100;
+  border-radius: 5px;
+  text-align: center;
+}
 
 header {
   background-image: url(../img/header-500.jpg);

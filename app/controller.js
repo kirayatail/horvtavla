@@ -23,30 +23,6 @@ function($scope, $http, $interval, $anchorScroll) {
 
     $scope.goto = $anchorScroll;
 
-    $scope.submit = function() {
-      var pledge = {
-        email: $scope.email,
-        amount: $scope.amount,
-        nick: $scope.nick,
-        anonymous: $scope.anonymous
-      };
-      console.log("Sending registration...");
-      $scope.registerPending = true;
-      $http.post('/api/pledge', pledge).then(function(res) {
-        $scope.registerPending = false;
-        $scope.registerSuccess = true;
-
-        $scope.email = "";
-        $scope.amount = "";
-        $scope.nick = "";
-        $scope.anonymous = false;
-
-      }, function(err) {
-        $scope.registerPending = false;
-        console.error(err);
-      });
-    };
-
     $interval(function() {
       if($scope.deadline && Date.now() > $scope.deadline)
         $scope.deadlinePassed = true;

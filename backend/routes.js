@@ -10,5 +10,5 @@ module.exports = function(app) {
 
   app.get('/api/goals', pledgeController.goals);
 
-  app.get('/api/deadline', pledgeController.deadline)
+  app.get('/api/deadline', pledgeController.deadline);
 };

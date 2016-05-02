@@ -91,49 +91,7 @@
   </div>
 
   <div class="container" ng-if="!deadlinePassed">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 text-center">
-        <h2 class="section-heading">Registrera mig (eller ändra mitt löfte)</h2>
-      </div>
-    </div>
-      <form>
-        <div class="row">
-          <div class="col-xs-2 col-sm-offset-4 text-right">
-            <label for="emailInput">Email</label>
-          </div>
-          <div class="col-xs-4">
-            <input id="emailInput" type="email" autocapitalize="none" autocomplete="email" autocorrect="off" ng-model="email"/>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-xs-2 col-sm-offset-4 text-right">
-            <label for="pledgeInput">Bidrag (kr)</label>
-          </div>
-          <div class="col-xs-4">
-            <input id="pledgeInput" type="number" value="20" min="0" ng-model="amount"/>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-xs-2 col-sm-offset-4 text-right">
-            <label for="nickInput">Nick</label>
-          </div>
-          <div class="col-xs-4">
-            <input id="nickInput" type="text" autocapitalize="none" autocomplete="off" autocorrect="off" ng-model="nick"/>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-xs-4 col-xs-offset-2 col-sm-offset-6">
-            <input id="anonymousInput" type="checkbox" ng-model="anonymous"/>
-            <label for="anonymousInput">Jag vill vara anonym</label>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-xs-12 center-center">
-            <button class="btn btn-default btn-xl" ng-click="submit()">Skicka <span class="register-success fa fa-check" ng-show="registerSuccess"></span></button>
-          </div>
-        </div>
-      </form>
-    </div>
+    <registerform></registerform>
   </div>
 </section>
 <section>

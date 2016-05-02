@@ -97,6 +97,19 @@ module.exports = {
     });
   },
   stats: function(req, res) {
+    function sorter(a,b) {
+      a = a.toUpperCase();
+      b = b.toUpperCase();
+      for(var i=0; i<Math.min(a.length, b.length); i++) {
+        if(a.charCodeAt(i) < b.charCodeAt(i))
+          return -1;
+
+        if(a.charCodeAt(i) > b.charCodeAt(i))
+          return 1;
+      }
+
+      return a.length - b.length;
+    }
     var nicks = [];
     var anonymous = 0;
     sum = 0;
@@ -112,7 +125,7 @@ module.exports = {
         }
       }
 
-      return res.send({backers: nicks.sort(), sum: sum, anonymous: anonymous});
+      return res.send({backers: nicks.sort(sorter), sum: sum, anonymous: anonymous});
     });
   },
   deadline: function(req, res){

@@ -12,6 +12,10 @@ function($scope, $http) {
       $scope.backers = res.data.backers;
       $scope.anonymous = res.data.anonymous;
       $scope.sum = res.data.sum;
+    });
+
+    $http.get('/api/deadline').then(function(res) {
+      $scope.deadline = res.data.timestamp;
     })
 
     $scope.registerSuccess = false;

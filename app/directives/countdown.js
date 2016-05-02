@@ -12,9 +12,9 @@ app.directive('countdown', ['$interval', function($interval) {
   }
 
   return {
-    template: '<h2 ng-if="counter">Deadline för registrering:<br />{{counter}}</h2>',
+    template: '<h2 ng-if="counter">Deadline för registrering:</h2><h1>{{counter}}</h1>',
     scope: {
-      deadline: '@'
+      deadline: '='
     },
     link: function(scope) {
       scope.counter = "";
@@ -23,7 +23,7 @@ app.directive('countdown', ['$interval', function($interval) {
           var diff = Math.floor((scope.deadline - Date.now()) / 1000);
           scope.counter = durationString(diff);
         }
-      })
+      }, 1000);
 
     }
   }

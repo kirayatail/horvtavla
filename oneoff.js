@@ -16,11 +16,12 @@ Pledge.find({}, function(err, pledges) {
     if(!p.paymentToken) {
       p.paymentToken = wordlist.pop();
       p.paid = false;
-      p.save();
     }
-
     mail.payment(p);
   });
 
-  process.exit();
+  pledges.save(function(err) {
+    console.error(err);
+    process.exit();
+  });
 });

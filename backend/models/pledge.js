@@ -6,6 +6,8 @@ var PledgeSchema = new Schema({
   nick: String,
   amount: Number,
   anonymous: Boolean,
+  paymentToken: String,
+  paid: Boolean
 });
 
 module.exports = mongoose.model('Pledge', PledgeSchema);

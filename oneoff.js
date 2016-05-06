@@ -1,3 +1,11 @@
 var mail = require('./backend/lib/mail');
+var mongoose = require('mongoose');
+require('./backend/models/pledge');
+var mongoUri = process.env.MONGODB_URI;
+var db = mongoose.connect(mongoUri);
 
-mail.send('imax@chalmers.it', 'test', "Detta testmail skickades som en one-off-körning");
+var Pledge = mongoose.model('Pledge');
+
+Pledge.find({}, function(err, pledges) {
+  console.log(pledges.map(p => p.email).join('\n'));
+});

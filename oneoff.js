@@ -7,5 +7,7 @@ var db = mongoose.connect(mongoUri);
 var Pledge = mongoose.model('Pledge');
 
 Pledge.find({}, function(err, pledges) {
-  return console.log(pledges.map(p => p.email).join('\n'));
+  console.log(pledges.map(p => p.email).join('\n'));
+
+  process.exit();
 });

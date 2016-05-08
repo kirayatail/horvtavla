@@ -22,7 +22,7 @@ module.exports = {
       nick: req.body.nick,
       anonymous: req.body.anonymous
     };
-    if(Date.now() > getDeadline()) {
+    if(Date.now() > module.exports.getDeadline().register) {
       return res.status(403).send({error: "Past deadline"});
     }
 
@@ -62,7 +62,7 @@ module.exports = {
       return res.status(400).send({message: "Token missing"});
     }
 
-    if(Date.now() > getDeadline()) {
+    if(Date.now() > module.exports.getDeadline().register) {
       return res.status(403).send({error: "Past deadline"});
     }
 
@@ -129,7 +129,7 @@ module.exports = {
     });
   },
   deadline: function(req, res){
-    res.send({timestamp: getDeadline()});
+    res.send(module.exports.getDeadline);
   },
   goals: function(req, res) {
     Goal.find({}, function(err, goals) {

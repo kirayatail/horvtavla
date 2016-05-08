@@ -3,7 +3,6 @@ var fs = require('fs');
 var mail = require('./backend/lib/mail');
 var mongoose = require('mongoose');
 require('./backend/models/pledge');
-var controller = require('./backend/controllers/pledgecontroller');
 var mongoUri = process.env.MONGODB_URI;
 var db = mongoose.connect(mongoUri);
 

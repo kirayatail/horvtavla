@@ -8,7 +8,7 @@ Din betalning är nu mottagen och bekräftad. <br />
 Du kan nu lugnt njuta av livet tills nästa mail kommer, det blir nämligen inbjudan till festen! Stay tuned!<br />
 <br />
 /iMax & Horv PREMIUM`;
-    this.send(pledge.email, "Canvastavlan - Betalning bekräftad", message);
+    return this.send(pledge.email, "Canvastavlan - Betalning bekräftad", message);
   },
   payment: function(pledge) {
     var message =

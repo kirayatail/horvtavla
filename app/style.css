@@ -28,6 +28,10 @@
   align-items: flex-start;
 }
 
+.backerlist .unpaid {
+  color: #aaa;
+}
+
 .meter-container {
     display: flex;
     flex-direction: row;

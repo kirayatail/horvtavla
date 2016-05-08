@@ -23,5 +23,6 @@ Pledge.find({'paymentToken': token}, function(err, p) {
     });
   } else {
     console.error("Not accepted", p, token, amount);
+    process.exit();
   }
 });

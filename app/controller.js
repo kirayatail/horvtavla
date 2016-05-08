@@ -15,10 +15,6 @@ function($scope, $http, $interval, $anchorScroll) {
       $scope.sum = res.data.sum;
     });
 
-    $http.get('/api/deadline').then(function(res) {
-      $scope.deadline = res.data.timestamp;
-    })
-
     $scope.registerSuccess = false;
 
     $scope.goto = $anchorScroll;

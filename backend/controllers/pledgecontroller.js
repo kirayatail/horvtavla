@@ -129,7 +129,7 @@ module.exports = {
     });
   },
   deadline: function(req, res){
-    res.send(module.exports.getDeadline);
+    res.send(module.exports.getDeadline());
   },
   goals: function(req, res) {
     Goal.find({}, function(err, goals) {

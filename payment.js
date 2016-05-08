@@ -18,6 +18,7 @@ Pledge.find({'paymentToken': token}, function(err, p) {
   if(Math.floor(p.amount) <= amount) {
     console.log("Payment accepted");
     mail.paymentConfirmed(p);
+    p.paid = true;
     p.save().then(function() {
       process.exit();
     }):

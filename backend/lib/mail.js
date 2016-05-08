@@ -2,7 +2,7 @@ var postmark = require('postmark')(process.env.POSTMARK_API_TOKEN);
 
 module.exports = {
   paymentConfirmed: function(pledge) {
-    var message = `Hej!<br />
+    var message = `Tack så mycket!<br />
 Din betalning är nu mottagen och bekräftad. <br />
 <br />
 Du kan nu lugnt njuta av livet tills nästa mail kommer, det blir nämligen inbjudan till festen! Stay tuned!<br />

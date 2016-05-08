@@ -54,6 +54,7 @@ När jag har tagit emot betalningen så får du ett automatiskt mail, och ditt n
           console.error("Unable to send via postmark: ", error.message);
           reject(error.message);
         } else {
+          console.log("Email sent:", subject);
           fulfill();
         }
       });

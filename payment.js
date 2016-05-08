@@ -13,7 +13,7 @@ console.log(process.argv);
 var token = process.argv[2];
 var amount = parseInt(process.argv[3]);
 
-Pledge.find({'paymentToken': token}, function(err, p) {
+Pledge.findOne({'paymentToken': token}, function(err, p) {
   if(p && Math.floor(p.amount) <= amount) {
     console.log("Payment accepted");
     mail.paymentConfirmed(p);

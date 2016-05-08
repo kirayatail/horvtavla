@@ -8,14 +8,16 @@ var db = mongoose.connect(mongoUri);
 
 var Pledge = mongoose.model('Pledge');
 
-console.log(process.argv);
-
 var token = process.argv[2];
 var amount = parseInt(process.argv[3]);
 
 Pledge.findOne({'paymentToken': token}, function(err, p) {
   if(p && Math.floor(p.amount) <= amount) {
     console.log("Payment accepted");
+    if(p.paid) {
+      console.log("Payment already registered");
+      process.exit();
+    }
     p.paid = true;
 
     Promise.all([p.save(), mail.paymentConfirmed(p)]).then(function() {

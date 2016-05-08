@@ -98,8 +98,8 @@ module.exports = {
   },
   stats: function(req, res) {
     function sorter(a,b) {
-      a = a.toUpperCase();
-      b = b.toUpperCase();
+      a = a.nick.toUpperCase();
+      b = b.nick.toUpperCase();
       for(var i=0; i<Math.min(a.length, b.length); i++) {
         if(a.charCodeAt(i) < b.charCodeAt(i))
           return -1;
@@ -120,7 +120,7 @@ module.exports = {
           if(p.anonymous) {
             anonymous++;
           } else {
-            nicks.push(p.nick);
+            nicks.push({nick: p.nick, paid: p.paid});
           }
         }
       }

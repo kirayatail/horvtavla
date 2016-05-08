@@ -21,6 +21,6 @@ Pledge.find({'paymentToken': token}, function(err, p) {
     p.paid = true;
     p.save().then(function() {
       process.exit();
-    }):
+    });
   }
 });

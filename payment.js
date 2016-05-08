@@ -16,11 +16,11 @@ var amount = parseInt(process.argv[3]);
 Pledge.findOne({'paymentToken': token}, function(err, p) {
   if(p && Math.floor(p.amount) <= amount) {
     console.log("Payment accepted");
-    mail.paymentConfirmed(p);
     p.paid = true;
-    p.save().then(function() {
+
+    Promise.all([p.save(), mail.paymentConfirmed(p)]).then(function() {
       process.exit();
-    });
+    })
   } else {
     console.error("Not accepted", p, token, amount);
     process.exit();

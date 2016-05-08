@@ -43,17 +43,21 @@ När jag har tagit emot betalningen så får du ett automatiskt mail, och ditt n
     this.send(pending.email, "Canvastavlan - Bekräfta ditt bidrag", message);
   },
   send: function(to, subject, content) {
-    postmark.send({
-      "From": "iMax <imax@chalmers.it>",
-      "To": to,
-      "Subject": subject,
-      "HtmlBody": content
-    }, function(error, success) {
-      if(error){
-        console.error("Unable to send via postmark: ", error.message);
-        return;
-      }
-    });
+    return new Promise(function(fulfill, reject) {
+      postmark.send({
+        "From": "iMax <imax@chalmers.it>",
+        "To": to,
+        "Subject": subject,
+        "HtmlBody": content
+      }, function(error, success) {
+        if(error){
+          console.error("Unable to send via postmark: ", error.message);
+          reject(error.message);
+        } else {
+          fulfill();
+        }
+      });
+    })
   },
   mockSend: function(to, subject, content) {
     console.log(

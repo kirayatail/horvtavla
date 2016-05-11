@@ -16,7 +16,7 @@ app.directive('progressBar', function() {
     templateUrl: 'directives/progress.html',
     link: function(scope) {
       scope.items = items;
-      scope.passedIndex = 5;
+      scope.passedIndex = 6;
     }
   }
 })

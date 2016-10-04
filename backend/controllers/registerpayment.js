@@ -6,11 +6,8 @@ var mongoose = require('mongoose');
 var Pledge = mongoose.model('Pledge');
 
 module.exports = function(req, res) {
-  var pass = req.body.pass;
-  var token = req.body.token;
-  var amount = req.body.amount;
-  
-  if(pass != 'cc5665dd24d134b3d5d64befb4dc7470622af30e3af9f21f') {
+  var {pass, token, amount} = req.body;
+  if(pass != process.env.PAYMENT_APP_TOKEN) {
     return res.status(401).send({message: 'invalid password'});
   }
   Pledge.findOne({'paymentToken': token}, function(err, p) {

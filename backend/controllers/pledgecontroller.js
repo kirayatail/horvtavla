@@ -10,11 +10,13 @@ var mail = require('../lib/mail');
 var push = new Pushover({token: process.env.PUSHOVER_APP, user: process.env.PUSHOVER_USER});
 
 
-function getDeadline() {
-  return 1462744800000;
-}
-
 module.exports = {
+  getDeadline: function() {
+    return {
+      register: process.env.REGISTER_DEADLINE,
+      payment: process.env.PAYMENT_DEADLINE
+    };
+  },
   register: function(req, res) {
     var pledge = {
       email: req.body.email,
@@ -22,7 +24,7 @@ module.exports = {
       nick: req.body.nick,
       anonymous: req.body.anonymous
     };
-    if(Date.now() > module.exports.getDeadline().register) {
+    if(Date.now() > this.getDeadline().register) {
       return res.status(403).send({error: "Past deadline"});
     }
 
@@ -62,7 +64,7 @@ module.exports = {
       return res.status(400).send({message: "Token missing"});
     }
 
-    if(Date.now() > module.exports.getDeadline().register) {
+    if(Date.now() > this.getDeadline().register) {
       return res.status(403).send({error: "Past deadline"});
     }
 
@@ -129,7 +131,7 @@ module.exports = {
     });
   },
   deadline: function(req, res){
-    res.send(module.exports.getDeadline());
+    res.send(this.getDeadline);
   },
   goals: function(req, res) {
     Goal.find({}, function(err, goals) {
